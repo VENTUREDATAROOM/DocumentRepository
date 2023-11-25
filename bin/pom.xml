@@ -13,7 +13,7 @@
 	<artifactId>sabji</artifactId>
 	<version>0.0.1-SNAPSHOT</version>
 	<name>sabji</name>
-	<description>Document Management System</description>
+	<description>sabji Management System</description>
 	<properties>
 		<java.version>1.8</java.version>
 	</properties>
@@ -85,7 +85,7 @@
 </dependency>
 	</dependencies>
      <build>
-		<finalName>document</finalName>
+		<finalName>sabji</finalName>
 		<plugins>
 			<plugin>
 				<groupId>org.springframework.boot</groupId>
