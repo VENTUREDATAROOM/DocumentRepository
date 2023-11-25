@@ -1,3 +1,3 @@
-# GDMS
+Document Genrator
 
-GDMS Star new DEV 02012023
+25  november 2023
