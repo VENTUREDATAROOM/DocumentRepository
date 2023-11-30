@@ -45,6 +45,7 @@ public class RegistrationController {
 				return Response2.generateResponse("Successfully register", HttpStatus.OK, "200");
 			}
 		}
-
-	}
+		
+		
+}
 }

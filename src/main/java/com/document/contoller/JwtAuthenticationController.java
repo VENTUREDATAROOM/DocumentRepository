@@ -26,12 +26,15 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.document.config.JwtTokenUtil;
+import com.document.entity.GdmsApiUsers;
 import com.document.model.JwtRequest;
 import com.document.model.Response2;
 import com.document.model.ResponseForToken;
+import com.document.repo.GdmsApiUserRepo;
 
 import io.jsonwebtoken.impl.DefaultClaims;
 import io.swagger.v3.oas.annotations.tags.Tag;
+import net.bytebuddy.dynamic.DynamicType.Builder.FieldDefinition.Optional;
 
 @RestController
 @CrossOrigin(origins = "*")
@@ -121,3 +124,5 @@ public class JwtAuthenticationController {
 		return expectedMap;
 	}
 }
+
+ 
