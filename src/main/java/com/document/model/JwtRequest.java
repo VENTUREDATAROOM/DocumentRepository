@@ -17,7 +17,7 @@ public class JwtRequest implements Serializable {
 	}
 
 	public String getEmail() {
-		return Email;
+		return this.Email;
 	}
 
 	public void setEmail(String email) {
