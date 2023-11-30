@@ -9,6 +9,8 @@ public class RegisterModal {
 	private String password;
 
 	private String flgOfUser;
+	
+	private String companyname;
 
 	public String getPassword() {
 		return password;
@@ -42,4 +44,15 @@ public class RegisterModal {
 		this.email = email;
 	}
 
+	public String getCompanyname() {
+		return companyname;
+	}
+
+	public void setCompanyname(String companyname) {
+		this.companyname = companyname;
+	}
+
+	
+	
+	
 }

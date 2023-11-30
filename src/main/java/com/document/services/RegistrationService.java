@@ -32,10 +32,12 @@ public class RegistrationService {
 
 		try {
 			GdmsApiUsers gdmsApiUsers = mapper.map(usrMstrDto, GdmsApiUsers.class);
-			gdmsApiUsers.setPassword(bcryptEncoder.encode(gdmsApiUsers.getPassword()));
+			gdmsApiUsers.setPassword(bcryptEncoder.encode(usrMstrDto.getPassword()));
 			gdmsApiUsers.setUserstatus("Y");
-			gdmsApiUsers.setUsername(gdmsApiUsers.getMobileNo());
+			gdmsApiUsers.setUsername(usrMstrDto.getMobileno());
 			gdmsApiUsers.setDateOfCreation(LocalDate.now());
+			gdmsApiUsers.setEmail(usrMstrDto.getEmail());
+			gdmsApiUsers.setCompanyName(usrMstrDto.getCompanyname());
 			gdmsApiUserRepo.save(gdmsApiUsers);
 			return "Success";
 		} catch (Exception e) {

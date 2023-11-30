@@ -28,6 +28,7 @@ public class JwtUserDetailsService implements UserDetailsService {
 	Logger logger = LoggerFactory.getLogger(JwtUserDetailsService.class);
 
 	@Override
+	
 	public UserDetails loadUserByUsername(String mobile) throws UsernameNotFoundException {
 
 		try {
@@ -36,13 +37,11 @@ public class JwtUserDetailsService implements UserDetailsService {
 				throw new UsernameNotFoundException("User not found with username: " + mobile);
 
 			} else {
-				return new User(user.get().getUsername(), user.get().getPassword(), new ArrayList<>());
+				return new User(user.get().getUsername(), user.get().getPassword(),  new ArrayList<>());
 			}
 
 		} catch (Exception e) {
 			throw new UsernameNotFoundException("User not found with username: " + mobile);
 		}
-
-	}
-
+ }
 }

@@ -34,6 +34,9 @@ public class GdmsApiUsers {
 
 	@Column(name = "user_status")
 	private String userstatus;// email
+	@Column(name="company_name")
+	private String companyName;// company name
+	
 
 	public String getUserstatus() {
 		return userstatus;
@@ -97,6 +100,16 @@ public class GdmsApiUsers {
 
 	public void setEmail(String email) {
 		this.email = email;
+	}
+
+	public String getCompanyName() {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+	public void setCompanyName(String companyName) {
+		// TODO Auto-generated method stub
+		this.companyName=companyName;
 	}
 
 }
