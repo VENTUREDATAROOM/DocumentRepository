@@ -61,7 +61,6 @@ public class RegistrationService {
 			log.error("there is an exception in  registring the user {} ", e.getMessage());
 			return "A";
 		}
-
 		
 	}
 }
