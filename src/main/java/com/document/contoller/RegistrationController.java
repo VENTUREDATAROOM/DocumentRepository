@@ -11,9 +11,12 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
+import com.document.model.ProfileModel;
 import com.document.model.RegisterModal;
 import com.document.model.Response2;
+import com.document.model.ResponseWithObject;
 import com.document.services.RegistrationService;
+import com.document.util.AppConstants;
 
 import io.swagger.v3.oas.annotations.tags.Tag;
 
@@ -45,7 +48,17 @@ public class RegistrationController {
 				return Response2.generateResponse("Successfully register", HttpStatus.OK, "200");
 			}
 		}
-		
-		
-}
+	}
+	@PostMapping(value = "/profileData")
+	public ResponseEntity<?> profileData(String userCode) {
+
+		ProfileModel profile = registrationService.getProfileData(userCode);
+		if (profile != null) {
+			return new ResponseWithObject().generateResponse(AppConstants.SUCCESSSTATUS, HttpStatus.OK, "200", profile);
+		} else {
+			return new ResponseWithObject().generateResponse("NA", HttpStatus.NOT_FOUND, "200", profile);
+		}
+
+	}
+	
 }

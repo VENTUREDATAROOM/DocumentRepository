@@ -6,7 +6,7 @@ import org.springframework.data.jpa.repository.JpaRepository;
 
 import com.document.entity.VegetableEntity;
 
-public interface VegetableRepo extends JpaRepository<VegetableEntity, Integer> {
+public interface VegetableRepo extends JpaRepository<VegetableEntity, Long> {
 
 	VegetableEntity findByVegIdAndUserCode(Long vegId, String userCode);
 

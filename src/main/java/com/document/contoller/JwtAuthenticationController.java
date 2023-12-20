@@ -54,14 +54,14 @@ public class JwtAuthenticationController {
 	private org.slf4j.Logger log = org.slf4j.LoggerFactory.getLogger(JwtAuthenticationController.class);
 
 	@PostMapping(value = "/authenticate")
-	public ResponseEntity<?> createAuthenticationToken(@RequestParam String username, @RequestParam String password)
+	public ResponseEntity<?> createAuthenticationToken(@RequestParam String email, @RequestParam String password)
 			throws Exception {
 
-		log.info("for login usrname:{} and password:-{}", username, password);
+		log.info("for login usrname:{} and password:-{}", email, password);
 
-		authenticate(username, password);
+		authenticate(email, password);
 
-		final UserDetails userDetails = userDetailsService.loadUserByUsername(username);
+		final UserDetails userDetails = userDetailsService.loadUserByUsername(email);
 
 		final String token = jwtTokenUtil.generateToken(userDetails);
 		if (token != null) {
@@ -76,10 +76,10 @@ public class JwtAuthenticationController {
 	public ResponseEntity<?> createAuthenticationTokenWithPath(@RequestBody JwtRequest authenticationRequest)
 			throws Exception {
 
-		log.info("from by json variable login usrname:{} {}", authenticationRequest.getUsername(),
+		log.info("from by json variable login usrname:{} {}", authenticationRequest.getEmail(),
 				authenticationRequest.getPassword());
-		authenticate(authenticationRequest.getUsername(), authenticationRequest.getPassword());
-		final UserDetails userDetails = userDetailsService.loadUserByUsername(authenticationRequest.getUsername());
+		authenticate(authenticationRequest.getEmail(), authenticationRequest.getPassword());
+		final UserDetails userDetails = userDetailsService.loadUserByUsername(authenticationRequest.getEmail());
 
 		final String token = jwtTokenUtil.generateToken(userDetails);
 
@@ -103,12 +103,12 @@ public class JwtAuthenticationController {
 		}
 	}
 
-	private void authenticate(String username, String password) {
-		Objects.requireNonNull(username);
+	private void authenticate(String email, String password) {
+		Objects.requireNonNull(email);
 		Objects.requireNonNull(password);
 
 		try {
-			authenticationManager.authenticate(new UsernamePasswordAuthenticationToken(username, password));
+			authenticationManager.authenticate(new UsernamePasswordAuthenticationToken(email, password));
 		} catch (DisabledException e) {
 			throw new DisabledException("USER_DISABLED", e);
 		} catch (BadCredentialsException e) {

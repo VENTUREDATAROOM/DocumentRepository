@@ -3,14 +3,13 @@ package com.document.model;
 public class RegisterModal {
 
 	private String mobileno;
+	private String name;
+	private String companyname;
 
 	private String email;
 
 	private String password;
-
-	private String flgOfUser;
 	
-	private String companyname;
 
 	public String getPassword() {
 		return password;
@@ -20,12 +19,13 @@ public class RegisterModal {
 		this.password = password;
 	}
 
-	public String getFlgOfUser() {
-		return flgOfUser;
+	
+	public String getName() {
+		return name;
 	}
 
-	public void setFlgOfUser(String flgOfUser) {
-		this.flgOfUser = flgOfUser;
+	public void setName(String name) {
+		this.name = name;
 	}
 
 	public String getMobileno() {

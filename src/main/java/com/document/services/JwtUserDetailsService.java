@@ -29,19 +29,19 @@ public class JwtUserDetailsService implements UserDetailsService {
 
 	@Override
 	
-	public UserDetails loadUserByUsername(String mobile) throws UsernameNotFoundException {
+	public UserDetails loadUserByUsername(String email) throws UsernameNotFoundException {
 
 		try {
-			Optional<GdmsApiUsers> user = apiUserRepo.findByMobileNo(mobile);
+			Optional<GdmsApiUsers> user = apiUserRepo.findByEmail(email);
 			if (user == null || !user.isPresent()) {
-				throw new UsernameNotFoundException("User not found with username: " + mobile);
+				throw new UsernameNotFoundException("User not found with username: " + email);
 
 			} else {
-				return new User(user.get().getUsername(), user.get().getPassword(), new ArrayList<>());
+				return new User(user.get().getEmail(), user.get().getPassword(), new ArrayList<>());
 			}
 
 		} catch (Exception e) {
-			throw new UsernameNotFoundException("User not found with username: " + mobile);
+			throw new UsernameNotFoundException("User not found with username: " + email);
 		}
  }
 }

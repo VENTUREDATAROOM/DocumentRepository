@@ -11,6 +11,7 @@ import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
 
 import com.document.entity.GdmsApiUsers;
+import com.document.model.ProfileModel;
 import com.document.model.RegisterModal;
 import com.document.repo.GdmsApiUserRepo;
 
@@ -34,7 +35,7 @@ public class RegistrationService {
 			GdmsApiUsers gdmsApiUsers = mapper.map(usrMstrDto, GdmsApiUsers.class);
 			gdmsApiUsers.setPassword(bcryptEncoder.encode(usrMstrDto.getPassword()));
 			gdmsApiUsers.setUserstatus("Y");
-			gdmsApiUsers.setUsername(usrMstrDto.getMobileno());
+			gdmsApiUsers.setName(usrMstrDto.getMobileno());
 			gdmsApiUsers.setDateOfCreation(LocalDate.now());
 			gdmsApiUsers.setEmail(usrMstrDto.getEmail());
 			gdmsApiUsers.setCompanyName(usrMstrDto.getCompanyname());
@@ -59,9 +60,34 @@ public class RegistrationService {
 
 		} catch (Exception e) {
 			log.error("there is an exception in  registring the user {} ", e.getMessage());
-			return "A";
+			return  "A";
+}
+}
+
+	public ProfileModel getProfileData(String userCode)
+	{
+		ProfileModel pro = new ProfileModel();
+		try {
+
+			Optional<GdmsApiUsers> users = gdmsApiUserRepo.findByMobileNo(userCode);
+			if (users.isPresent()) {
+				pro.setEmail(users.get().getEmail());
+				pro.setMobileNumber(userCode);
+				
+				pro.setName(users.get().getName());
+				pro.setFlagofuser(users.get().getFlgOfUser());
+				pro.setAadharNumber(users.get().getAadharNumber());
+						
+			}
+
+			return pro;
+
+		} catch (Exception e) {
+			log.error("there is an exception in  registring the user {} ", e.getMessage());
+			return pro;
 		}
-		
-		
+
 	}
+	
+
 }

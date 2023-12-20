@@ -34,7 +34,7 @@ public class TestController {
 	public String registrationCheck() {
 
 		GdmsApiUsers apiUsers = new GdmsApiUsers();
-		apiUsers.setUsername("7275431268");
+		apiUsers.setName("7275431268");
 		apiUsers.setPassword(encoder.encode("password"));
 		apiUsers.setFlgOfUser("A");
 		GdmsApiUserRepo.save(apiUsers);

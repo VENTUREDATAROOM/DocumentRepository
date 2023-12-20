@@ -17,8 +17,8 @@ public class GdmsApiUsers {
 	@GeneratedValue(strategy = GenerationType.AUTO)
 	@Column(name = "ID")
 	private Long id;
-	@Column(name = "USERNAME")
-	private String username;
+	@Column(name = "NAME")
+	private String name;
 	@Column(name = "PASSWORD")
 	private String password;
 
@@ -31,7 +31,8 @@ public class GdmsApiUsers {
 	private String mobileNo;// mobile no
 	@Column(name = "email")
 	private String email;
-
+	@Column(name="aadhar_no")
+	private String aadharNumber;
 	@Column(name = "user_status")
 	private String userstatus;// email
 	@Column(name="company_name")
@@ -54,12 +55,14 @@ public class GdmsApiUsers {
 		this.id = id;
 	}
 
-	public String getUsername() {
-		return username;
+	
+
+	public String getName() {
+		return name;
 	}
 
-	public void setUsername(String username) {
-		this.username = username;
+	public void setName(String name) {
+		this.name = name;
 	}
 
 	public String getPassword() {
@@ -101,6 +104,7 @@ public class GdmsApiUsers {
 	public void setEmail(String email) {
 		this.email = email;
 	}
+	
 
 	public String getCompanyName() {
 		// TODO Auto-generated method stub
@@ -110,6 +114,14 @@ public class GdmsApiUsers {
 	public void setCompanyName(String companyName) {
 		// TODO Auto-generated method stub
 		this.companyName=companyName;
+	}
+	public String getAadharNumber()
+	{
+		return aadharNumber;
+	}
+
+	public void setAadharNumber(String aadharNumber) {
+		this.aadharNumber = aadharNumber;
 	}
 
 }

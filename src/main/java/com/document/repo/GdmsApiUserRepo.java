@@ -8,7 +8,7 @@ import com.document.entity.GdmsApiUsers;
 
 public interface GdmsApiUserRepo extends JpaRepository<GdmsApiUsers, String> {
 
-	GdmsApiUsers findByUsername(String username);
+	GdmsApiUsers findByName(String name);
 
 	Optional<GdmsApiUsers> findByMobileNo(String mobileno);
     Optional<GdmsApiUsers> findByEmail(String email);
