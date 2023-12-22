@@ -29,16 +29,17 @@ public class RegistrationService {
 
 	private org.slf4j.Logger log = org.slf4j.LoggerFactory.getLogger(RegistrationService.class);
 
-	public String registerByMobileApplication(RegisterModal usrMstrDto) {
+	public String registerByApplication(RegisterModal usrMstrDto) {
 
 		try {
 			GdmsApiUsers gdmsApiUsers = mapper.map(usrMstrDto, GdmsApiUsers.class);
 			gdmsApiUsers.setPassword(bcryptEncoder.encode(usrMstrDto.getPassword()));
 			gdmsApiUsers.setUserstatus("Y");
-			gdmsApiUsers.setName(usrMstrDto.getMobileno());
+			gdmsApiUsers.setUsername(usrMstrDto.getUsername());
+			gdmsApiUsers.setName(usrMstrDto.getName());
 			gdmsApiUsers.setDateOfCreation(LocalDate.now());
 			gdmsApiUsers.setEmail(usrMstrDto.getEmail());
-			gdmsApiUsers.setCompanyName(usrMstrDto.getCompanyname());
+			gdmsApiUsers.setCompanyName(usrMstrDto.getCompanyName());
 			gdmsApiUserRepo.save(gdmsApiUsers);
 			return "Success";
 		} catch (Exception e) {
@@ -48,11 +49,11 @@ public class RegistrationService {
 
 	}
 
-	public String findByMobile(@Valid RegisterModal userMstr) {
+	public String findByUsername(RegisterModal userMstr) {
 
 		try {
-			Optional<GdmsApiUsers> mobileCheck = gdmsApiUserRepo.findByMobileNo(userMstr.getMobileno());
-			if (mobileCheck.isPresent()) {
+			Optional<GdmsApiUsers> usernameCheck = gdmsApiUserRepo.findByUsername(userMstr.getUsername());
+			if (usernameCheck.isPresent()) {
 				return "A";
 			} else {
 				return "NA";
@@ -69,14 +70,12 @@ public class RegistrationService {
 		ProfileModel pro = new ProfileModel();
 		try {
 
-			Optional<GdmsApiUsers> users = gdmsApiUserRepo.findByMobileNo(userCode);
+			Optional<GdmsApiUsers> users = gdmsApiUserRepo.findByUsername(userCode);
 			if (users.isPresent()) {
 				pro.setEmail(users.get().getEmail());
-				pro.setMobileNumber(userCode);
-				
+			    pro.setUsername(userCode);
 				pro.setName(users.get().getName());
-				pro.setFlagofuser(users.get().getFlgOfUser());
-				pro.setAadharNumber(users.get().getAadharNumber());
+				pro.setCompanyName(users.get().getCompanyName());
 						
 			}
 

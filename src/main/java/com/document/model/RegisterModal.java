@@ -2,9 +2,9 @@ package com.document.model;
 
 public class RegisterModal {
 
-	private String mobileno;
+	private String username;
 	private String name;
-	private String companyname;
+	private String companyName;
 
 	private String email;
 
@@ -28,12 +28,14 @@ public class RegisterModal {
 		this.name = name;
 	}
 
-	public String getMobileno() {
-		return mobileno;
+	
+
+	public String getUsername() {
+		return username;
 	}
 
-	public void setMobileno(String mobileno) {
-		this.mobileno = mobileno;
+	public void setUsername(String username) {
+		this.username = username;
 	}
 
 	public String getEmail() {
@@ -44,12 +46,12 @@ public class RegisterModal {
 		this.email = email;
 	}
 
-	public String getCompanyname() {
-		return companyname;
+	public String getCompanyName() {
+		return companyName;
 	}
 
-	public void setCompanyname(String companyname) {
-		this.companyname = companyname;
+	public void setCompanyName(String companyName) {
+		this.companyName = companyName;
 	}
 
 	
