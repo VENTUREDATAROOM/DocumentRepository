@@ -16,13 +16,7 @@ public class JwtRequest implements Serializable {
 		
 	}
 
-	public String getEmail() {
-		return this.Email;
-	}
-
-	public void setEmail(String email) {
-		this.Email = email;
-	}
+	
 
 	public JwtRequest( String email, String password) {
 		
@@ -30,7 +24,13 @@ public class JwtRequest implements Serializable {
 		this.setPassword(password);
 		
 	}
+	public String getEmail() {
+		return this.Email;
+	}
 
+	public void setEmail(String email) {
+		this.Email = email;
+	}
 	
 
 	public String getPassword() {

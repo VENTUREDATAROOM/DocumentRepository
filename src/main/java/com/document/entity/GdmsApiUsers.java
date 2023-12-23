@@ -10,7 +10,7 @@ import javax.persistence.Id;
 import javax.persistence.Table;
 
 @Entity
-@Table(name = "API_USERS")
+@Table(name = "GDMS_API")
 
 public class GdmsApiUsers {
 

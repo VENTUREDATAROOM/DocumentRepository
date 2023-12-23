@@ -52,11 +52,11 @@ public class RegistrationController {
 	@PostMapping(value = "/profileData")
 	public ResponseEntity<?> profileData(String userCode) {
 
-		ProfileModel profile = registrationService.getProfileData(userCode);
-		if (profile != null) {
-			return new ResponseWithObject().generateResponse(AppConstants.SUCCESSSTATUS, HttpStatus.OK, "200", profile);
+		ProfileModel pro = registrationService.getProfileData(userCode);
+		if (pro != null) {
+			return new ResponseWithObject().generateResponse(AppConstants.SUCCESSSTATUS, HttpStatus.OK, "200", pro);
 		} else {
-			return new ResponseWithObject().generateResponse("NA", HttpStatus.NOT_FOUND, "200", profile);
+			return new ResponseWithObject().generateResponse("NA", HttpStatus.NOT_FOUND, "200", pro);
 		}
 
 	}

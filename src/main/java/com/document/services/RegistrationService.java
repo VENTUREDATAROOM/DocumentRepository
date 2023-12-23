@@ -3,7 +3,6 @@ package com.document.services;
 import java.time.LocalDate;
 import java.util.Optional;
 
-import javax.validation.Valid;
 
 import org.modelmapper.ModelMapper;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -73,7 +72,7 @@ public class RegistrationService {
 			Optional<GdmsApiUsers> users = gdmsApiUserRepo.findByUsername(userCode);
 			if (users.isPresent()) {
 				pro.setEmail(users.get().getEmail());
-			    pro.setUsername(userCode);
+			    pro.setUsername(users.get().getUsername());
 				pro.setName(users.get().getName());
 				pro.setCompanyName(users.get().getCompanyName());
 						

@@ -34,14 +34,14 @@ public class JwtUserDetailsService implements UserDetailsService {
 		try {
 			Optional<GdmsApiUsers> user = apiUserRepo.findByEmail(email);
 			if (user == null || !user.isPresent()) {
-				throw new UsernameNotFoundException("User not found with username: " + email);
+				throw new UsernameNotFoundException("User not found with email: " + email);
 
-			} else {
+            } else {
 				return new User(user.get().getEmail(), user.get().getPassword(), new ArrayList<>());
 			}
 
 		} catch (Exception e) {
-			throw new UsernameNotFoundException("User not found with username: " + email);
+			throw new UsernameNotFoundException("User not found with email: " + email);
 		}
  }
 }
