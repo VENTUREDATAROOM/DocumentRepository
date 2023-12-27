@@ -30,6 +30,9 @@ public class RegisterModal {
 
 	
 
+	
+	
+
 	public String getUsername() {
 		return username;
 	}

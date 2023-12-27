@@ -27,9 +27,9 @@ public class GdmsApiUsers {
 	private LocalDate dateOfCreation;
 	@Id
 	@Column(name = "user_name")
-	private String username;// username as mobile no
+	private String username;// 
 	@Column(name = "email")
-	private String email;  // email
+	private String email;  //username as email
 	
 	@Column(name = "user_status")
 	private String userstatus;
@@ -59,6 +59,8 @@ public class GdmsApiUsers {
 	public void setDateOfCreation(LocalDate dateOfCreation) {
 		this.dateOfCreation = dateOfCreation;
 	}
+	
+	
 	public String getUsername() {
 		return username;
 	}

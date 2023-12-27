@@ -34,14 +34,14 @@ public class RegistrationController {
 	@PostMapping(value = "/registerToApp")
 	public ResponseEntity<?> registration(@Valid @RequestBody RegisterModal userMstr) {
 
-		String usernameStatus = registrationService.findByUsername(userMstr);
-		if ("A".equals(usernameStatus)) {
-			return Response2.generateResponse("Username  already available", HttpStatus.OK, "201");
+		String userStatus = registrationService.findByUsername(userMstr);
+		if ("A".equals(userStatus)) {
+			return Response2.generateResponse("User name  already available", HttpStatus.OK, "201");
 		} else {
 			String regResponse = registrationService.registerByApplication(userMstr);
 			log.info("Registration status of the user {} ", regResponse);
 			if (regResponse.equalsIgnoreCase("existing")) {
-				return Response2.generateResponse("User already exist ", HttpStatus.FOUND, "302");
+				return Response2.generateResponse("mobile number already exist ", HttpStatus.FOUND, "302");
 			} else if (regResponse.equalsIgnoreCase("Error")) {
 				return Response2.generateResponse("Something wnet wrong", HttpStatus.OK, "200");
 			} else {
