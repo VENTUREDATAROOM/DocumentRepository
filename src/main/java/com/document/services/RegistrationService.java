@@ -1,8 +1,10 @@
 package com.document.services;
 
 import java.time.LocalDate;
+import java.util.ArrayList;
+import java.util.List;
 import java.util.Optional;
-
+import java.util.stream.Collectors;
 
 import org.modelmapper.ModelMapper;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -10,6 +12,7 @@ import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
 
 import com.document.entity.GdmsApiUsers;
+
 import com.document.model.ProfileModel;
 import com.document.model.RegisterModal;
 import com.document.repo.GdmsApiUserRepo;
@@ -86,6 +89,22 @@ public class RegistrationService {
 		}
 
 	}
-	
-
+	public List<ProfileModel> getAllProfiles()
+	{
+		List<GdmsApiUsers> gdmsApiUsers=gdmsApiUserRepo.findAll();
+	       List<ProfileModel> pro=new ArrayList<>();
+		try {
+			 if (!gdmsApiUsers.isEmpty()) {
+		            
+				 pro= gdmsApiUsers.stream()
+			                .map(user -> mapper.map(user, ProfileModel.class))
+			                .collect(Collectors.toList());
+			    //pro=  mapper.map(gdmsApiUsers.get(), ProfileModel.class);
+			 }
+			
+      } catch (Exception e) {
+			log.error("there is an exception in  registring the user {} ", e.getMessage());
+		}
+		return pro;
+	}
 }

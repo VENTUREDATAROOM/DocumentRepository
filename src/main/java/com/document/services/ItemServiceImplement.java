@@ -21,7 +21,7 @@ import com.document.repo.FarmerInfoRepo;
 import com.document.repo.ItemsRepo;
 import com.document.repo.VegetableRepo;
 
-;
+
 
 @Service
 public class ItemServiceImplement implements ItemService {
